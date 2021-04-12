@@ -37,22 +37,26 @@ img {
   /* overflow: hidden; */
   /* margin: 3.5%; */
   margin: 3vh 6vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.header-logo {
+/* .header-logo {
   float: left;
 }
 .main-navbar {
   float: right;
-}
+} */
 .topnav a {
-  float: left;
-  display: block;
+  /* float: left; */
+  /* display: block; */
   color: #000000;
-  text-align: center;
-  padding: 12px 12px;
-  margin: 5px;
+  /* text-align: center; */
+  /* padding: 12px 12px; */
+  padding: 1rem 1.5rem;
+  /* margin: 5px; */
   text-decoration: none;
-  font-size: 20px;
+  font-size: calc(16 * var(--res));
   font-family: Roboto, sans-serif;
 }
 
@@ -488,18 +492,22 @@ input[data-error]::after {
   /* padding: 0; */
 }
 .copyrights {
-  color: #fe142f;
-  padding: 0;
-  font-size: 1rem;
-  margin: 60px 0 30px;
+  /* color: #fe142f; */
+  /* padding: 0; */
+  /* font-size: 1rem; */
+  /* margin: 60px 0 30px; */
   font-weight: bolder;
+  color: var(--main-color);
+  font-size: calc(1rem * var(--res));
+  margin-top: 3rem;
 }
 .hero-section > .btn-signup {
   display: none;
 }
 footer {
-  padding-left: 2vw;
-  padding-right: 2vw;
+  /* padding-left: 2vw;
+  padding-right: 2vw; */
+  padding: 0 2vw;
   margin: 0 20px;
 }
 @media screen and (max-width: 800px) {
