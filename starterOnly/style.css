@@ -6,6 +6,27 @@
   --res: calc(0.01 * 10vmin);
 }
 
+/* input:invalid {
+  border: 2px solid red;
+} */
+#error--msg {
+  color: rgba(255, 0, 0, 0.664);
+  font-size: 0.9rem;
+  margin: 0;
+}
+.error--msg {
+  color: rgba(255, 0, 0, 0.664);
+  font-size: 0.9rem;
+  margin: 0;
+  /* position: absolute; */
+}
+.border--error {
+  border: solid 2px red;
+}
+.border--error--bis {
+  border-left: solid 5px red;
+}
+
 * {
   /* box-sizing: border-box; */
   /* margin: 0;
