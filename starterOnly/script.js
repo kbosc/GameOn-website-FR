@@ -20,6 +20,8 @@ const formSubmit = document.getElementById("submit");
 const checkAgree = document.getElementById("checkbox1");
 const errorMsg = document.getElementById("error--msg");
 const radiosBorder = document.getElementById("radio--error");
+const termsError = document.getElementById("terms--error");
+const agreeChecked = document.getElementById("agree--checked");
 
 // Event listener
 document.querySelector(".close").addEventListener("click", onClick);
@@ -28,6 +30,7 @@ mail.addEventListener("blur", validateMail);
 formSubmit.addEventListener("click", agreeAccepted);
 formSubmit.addEventListener("click", validateForm);
 radiosBorder.addEventListener("click", resetRadio);
+agreeChecked.addEventListener("click", resetAgree);
 
 // Reset error message and style function
 function reset() {
@@ -35,9 +38,12 @@ function reset() {
   this.nextElementSibling.remove();
   console.log("focus");
 }
+function resetAgree() {
+  termsError.innerHTML = "";
+  console.log("check");
+}
 function resetRadio() {
   this.style.border = "none";
-  // this.previousElementSibling.remove();
   errorMsg.textContent = "";
 }
 
@@ -55,13 +61,18 @@ function onClick(e) {
   modalbg.style.display = "none";
 }
 // Validate age
+function validateDate(d){
+  if (!isNaN((new Date(d)).getTime()))
+}
 // let age = document.getElementById("birthdate")
 
 // Terms of use checked
 function agreeAccepted(event) {
   if (!checkAgree.checked) {
     event.preventDefault();
-    alert("please accept the terms of use");
+    termsError.innerHTML =
+      "You must verify that you agree to the terms and conditions.";
+    // alert("please accept the terms of use");
   }
 }
 
@@ -77,13 +88,8 @@ function validateForm(event) {
   }
   if (!formValid) {
     event.preventDefault();
-    // alert("Must check some option!");
     radiosBorder.classList.add("border--error--bis");
-    // radiosBorder.insertAdjacentHTML(
-    //   "beforebegin",
-    //   "<p class='error--msg'>Must check some option !<p>"
-    // );
-    errorMsg.textContent = "Must check some option !";
+    errorMsg.textContent = "You must choose an option.";
   }
   // return formValid;
 }
