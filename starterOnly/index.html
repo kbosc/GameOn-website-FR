@@ -45,15 +45,15 @@
         <div class="hero-img">
           <img src="./images/bg_img.jpg" alt="img" />
         </div>
-        <!-- <button class="btn-signup modal-btn">
+        <button class="btn-signup modal-btn">
           Sign Up Now
-        </button> -->
+        </button>
       </div>
 
       <div class="bground">
         <div class="content">
           <span class="close"></span>
-          <div class="modal-body">
+          <div class="modal-body" id="modal-body">
             <form
               name="reserve"
               id="reserve"
@@ -65,13 +65,14 @@
                 class="formData">
                 <label>First name</label>
                 <input
-                  class="text-control"
+                  class="text-control error--name"
                   type="text"
                   id="first"
                   name="first"
                   minlength="2"
                   required
                 />
+                <div class="error--msg error--firstname" id="error--firstname"></div>
               </div>
               <div
                 class="formData">
@@ -84,7 +85,7 @@
                   minlength="2"
                   required
                 />
-              </div>
+                <div class="error--msg" id="error--lastname"></div>
               <div
                 class="formData">
                 <label>E-mail</label>
@@ -95,6 +96,7 @@
                   name="email"
                   required
                 />
+                <div class="error--msg" id="error--mail"></div>
               </div>
               <div
                 class="formData">
@@ -106,11 +108,13 @@
                   name="birthdate"
                   required
                 />
+                <div class="error--msg" id="error--birthdate"></div>
               </div>
               <div
                 class="formData">
                 <label>How many GameOn tournaments have you participated in?</label>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" required>
+                <div class="error--msg" id="error--quantity"></div>
               </div>
               <p class="text-label">Which cities?</p>
               
@@ -209,12 +213,39 @@
                 id="submit"
                 type="submit"
                 class="button"
-                value="Here we go"
+                value="Go"
               />
             </form>
           </div>
         </div>
       </div>
+
+
+
+      <div class="bground--submit">
+        <div class="content--submit">
+          <span class="close"></span>
+          <div class="modal-body--submit" id="modal-body">
+            <p class="text--submit">Thank you for submitting your registration details</p>
+            <input
+                class="btn-submit"
+                id="modal--submit"
+                type="submit"
+                class="button"
+                value="Close"
+              />
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
     </main>
     <footer>
       <p class="copyrights">
