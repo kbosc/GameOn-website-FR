@@ -208,8 +208,6 @@ function validateForm(event) {
     event.preventDefault();
     console.log("Win");
     launchModalSubmit();
-    // onClick();
-    // modalBodyContent();
     // return true;
   } else {
     event.preventDefault();
@@ -226,22 +224,26 @@ function validateForm(event) {
   }
 }
 
-const modalbgSubmit = document.querySelector(".bground--submit");
-// formSubmit.addEventListener("click", launchModalSubmit);
 function launchModalSubmit() {
-  modalbgSubmit.style.display = "block";
+  const modalSubmit = document.getElementById("modal--submit");
+  modalSubmit.style.display = "inline-block";
+  modalBody.style.display = "none";
+  // modalBody.innerHTML =
+  //   "<p id='txt--submit'>Thank you for submitting your registration details</p> <input class='btn-submit' id='modal--submit' type='submit' class='button' value='Close'/>";
 }
-// document.querySelector(".active").addEventListener("click", launchModalSubmit);
-// function modalBodyContent() {
-//   modalBody.innerHTML =
-//     "<p class='submit--registration>Thank you for submitting your registration details</p><input class='btn-submit' id='submit--close' type='submit' class='button' value='Close'/>";
+// const modaSubmit = document.getElementById("modal--submit");
+// modaSubmit.addEventListener("click", closeModaSubmit);
+// function closeModaSubmit() {
+//   console.log("hello world");
+//   modalbg.style.display = "none";
 // }
+document.getElementById("modal--submit").addEventListener("click", () => {
+  console.log("hello world");
+  modalbg.style.display = "none";
+});
+
 // Reset error message and style function
 function reset() {
-  // firstName.style.border = "none";
-  // firstName.nextElementSibling.remove();
-  // lastName.style.border = "none";
-  // lastName.nextElementSibling.remove();
   firstNameError.textContent = "";
   firstName.style.border = "none";
 
@@ -261,11 +263,3 @@ function reset() {
   radiosBorder.style.border = "none";
   errorMsg.textContent = "";
 }
-// function resetAgree() {
-//   termsError.innerHTML = "";
-//   console.log("check");
-// }
-// function resetRadio() {
-//   radiosBorder.style.border = "none";
-//   errorMsg.textContent = "";
-// }
