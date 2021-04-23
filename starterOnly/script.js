@@ -14,7 +14,7 @@ const formData = document.querySelectorAll(".formData");
 
 const firstName = document.getElementById("first");
 const firstNameError = document.getElementById("error--firstname");
-// const firstNameError = document.getElementsByClassName("error--firstname");
+
 const lastName = document.getElementById("last");
 const lastNameError = document.getElementById("error--lastname");
 
@@ -34,47 +34,49 @@ const errorMsg = document.getElementById("error--msg");
 const radiosBorder = document.getElementById("radio--error");
 const termsError = document.getElementById("terms--error");
 const agreeChecked = document.getElementById("agree--checked");
-// const modalBody = document.getElementsByClassName("modal-body");
 const modalBody = document.getElementById("modal-body");
-// const modalBody = document.getElementById("reserve");
+const heroSection = document.getElementById("hero-section");
+const footer = document.querySelector("footer");
+document
+  .getElementById("close-submit")
+  .addEventListener("click", modalResponsiveClose);
 
 // Event listener
 document.querySelector(".close").addEventListener("click", onClick);
-// mail.addEventListener("focus", reset);
-// mail.addEventListener("blur", validateMail);
-// formSubmit.addEventListener("click", agreeAccepted);
-// formSubmit.addEventListener("click", validateRadio);
-// radiosBorder.addEventListener("click", resetRadio);
-// agreeChecked.addEventListener("click", resetAgree);
-// birthDate.addEventListener("blur", validateDate);
-// lastName.addEventListener("blur", validateName);
-// lastName.addEventListener("focus", reset);
-// firstName.addEventListener("blur", validateName);
-// firstName.addEventListener("focus", reset);
-// numberTournament.addEventListener("focus", reset);
-// numberTournament.addEventListener("blur", validateNumber);
 formSubmit.addEventListener("click", validateForm);
-// birthDate.addEventListener("focus", validateDate);
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
+// .hero-section,
+// footer {
+//   display: none;
+// }
+
+function modalResponsive() {
+  if (window.matchMedia("(max-width:500px)").matches) {
+    heroSection.style = "display: none";
+    footer.style = "display: none";
+    console.log("le match media");
+  }
+}
+function modalResponsiveClose() {
+  if (window.matchMedia("(max-width:500px)").matches) {
+    heroSection.style = "display: block";
+    footer.style = "display: bloc";
+    console.log("le match media close");
+  }
+}
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
+  modalResponsive();
 }
-// document
-//   .getElementById("close--submit")
-//   .addEventListener("click", onClickSubmit);
-// closeSubmit;
-// close modal
-// function onClickSubmit() {
-//   console.log("close modal");
-//   modalbgSubmit.display = "none";
-// }
+
 function onClick() {
   console.log("close modal");
   modalbg.style.display = "none";
+  modalResponsiveClose();
 }
 
 function validateNumber() {
@@ -83,10 +85,6 @@ function validateNumber() {
   } else {
     numberTournament.style.border = "2px solid red";
     numberTournamentError.textContent = "Must be a whole number";
-    // numberTournament.insertAdjacentHTML(
-    //   "afterend",
-    //   "<p class='error--msg'>Must be a whole number<p>"
-    // );
     return false;
   }
 }
@@ -95,18 +93,12 @@ function validateName() {
   const regex = /^.{2,}$/;
   if (regex.test(String(lastName.value))) {
     console.log("lastname true");
-    // lastName.style.border = "none";
-    // lastName.nextElementSibling.remove();
     return true;
   } else {
     lastName.style.border = "2px solid red";
     console.log("lastname false");
     lastNameError.textContent =
       "Please enter 2 or more characters for the name field.";
-    // lastName.insertAdjacentHTML(
-    //   "afterend",
-    //   "<p class='error--msg'>Please enter 2 or more characters for the name field.<p>"
-    // );
     return false;
   }
 }
@@ -114,17 +106,12 @@ function validateFirstName() {
   const regex = /^.{2,}$/;
   if (regex.test(String(firstName.value))) {
     console.log("firstname true");
-    // firstName.style.border = "none";
-    // firstName.nextElementSibling.remove();
     return true;
   } else {
     firstName.style.border = "2px solid red";
     console.log("firtname false");
     firstNameError.textContent =
       "Please enter 2 or more characters for the name field.";
-    // firstName.insertAdjacentHTML(
-    //   "afterend",
-    //   "<p class='error--msg'>Please enter 2 or more characters for the name field.<p>"
     // );
     return false;
   }
@@ -134,17 +121,11 @@ function validateDate() {
   const regex = /^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/;
   if (regex.test(String(birthDate.value))) {
     console.log("date true");
-    // birthDate.style.border = "none";
-    // birthDate.nextElementSibling.remove();
     return true;
   } else {
     birthDate.style.border = "2px solid red";
     console.log("date false");
     birthDateError.textContent = "You must enter your date of birth.";
-    // birthDate.insertAdjacentHTML(
-    //   "afterend",
-    //   "<p class='error--msg'>You must enter your date of birth.<p>"
-    // );
     return false;
   }
 }
@@ -186,10 +167,6 @@ function validateMail() {
   } else {
     mail.style.border = "2px solid red";
     mailError.textContent = "Must be a valid email address.";
-    // mail.insertAdjacentHTML(
-    //   "afterend",
-    //   "<p class='error--msg'>Must be a valid email address.<p>"
-    // );
     return false;
   }
 }
@@ -228,15 +205,8 @@ function launchModalSubmit() {
   const modalSubmit = document.getElementById("modal--submit");
   modalSubmit.style.display = "inline-block";
   modalBody.style.display = "none";
-  // modalBody.innerHTML =
-  //   "<p id='txt--submit'>Thank you for submitting your registration details</p> <input class='btn-submit' id='modal--submit' type='submit' class='button' value='Close'/>";
 }
-// const modaSubmit = document.getElementById("modal--submit");
-// modaSubmit.addEventListener("click", closeModaSubmit);
-// function closeModaSubmit() {
-//   console.log("hello world");
-//   modalbg.style.display = "none";
-// }
+
 document.getElementById("modal--submit").addEventListener("click", () => {
   console.log("hello world");
   modalbg.style.display = "none";
