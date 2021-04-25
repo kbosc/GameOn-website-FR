@@ -10,7 +10,7 @@ function editNav() {
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
-const formData = document.querySelectorAll(".formData");
+// const formData = document.querySelectorAll(".formData");
 
 const firstName = document.getElementById("first");
 const firstNameError = document.getElementById("error--firstname");
@@ -28,31 +28,43 @@ const numberTournament = document.getElementById("quantity");
 const numberTournamentError = document.getElementById("error--quantity");
 
 const radios = document.getElementsByName("location");
-const formSubmit = document.getElementById("submit");
-const checkAgree = document.getElementById("checkbox1");
-const errorMsg = document.getElementById("error--msg");
 const radiosBorder = document.getElementById("radio--error");
-const termsError = document.getElementById("terms--error");
+
+const checkAgree = document.getElementById("checkbox1");
 const agreeChecked = document.getElementById("agree--checked");
+
+const formSubmit = document.getElementById("submit");
+const errorMsg = document.getElementById("error--msg");
+const termsError = document.getElementById("terms--error");
 const modalBody = document.getElementById("modal-body");
 const heroSection = document.getElementById("hero-section");
 const footer = document.querySelector("footer");
-document
-  .getElementById("close-submit")
-  .addEventListener("click", modalResponsiveClose);
 
 // Event listener
+document.getElementById("close-submit").addEventListener("click", onClick);
 document.querySelector(".close").addEventListener("click", onClick);
 formSubmit.addEventListener("click", validateForm);
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
-// .hero-section,
-// footer {
-//   display: none;
-// }
+function launchModal() {
+  modalbg.style.display = "block";
+  modalResponsive();
+}
 
+function onClick() {
+  console.log("close modal");
+  modalResponsiveClose();
+  modalbg.style.display = "none";
+  // modalbg.style = "display: none";
+}
+function launchModalSubmit() {
+  const modalSubmit = document.getElementById("modal--submit");
+  modalSubmit.style.display = "inline-block";
+  modalBody.style.display = "none";
+}
+// ------------------Responsive Modal-------------------
 function modalResponsive() {
   if (window.matchMedia("(max-width:500px)").matches) {
     heroSection.style = "display: none";
@@ -67,28 +79,22 @@ function modalResponsiveClose() {
     console.log("le match media close");
   }
 }
-// launch modal form
-function launchModal() {
-  modalbg.style.display = "block";
-  modalResponsive();
-}
+// ------------------Responsive Modal-------------------
 
-function onClick() {
-  console.log("close modal");
-  modalbg.style.display = "none";
-  modalResponsiveClose();
-}
-
-function validateNumber() {
-  if (/^\d+$/.test(String(numberTournament.value))) {
+// -----------------Validate Submit------------------------
+function validateFirstName() {
+  const regex = /^.{2,}$/;
+  if (regex.test(String(firstName.value))) {
+    console.log("firstname true");
     return true;
   } else {
-    numberTournament.style.border = "2px solid red";
-    numberTournamentError.textContent = "Must be a whole number";
+    firstName.style.border = "2px solid red";
+    console.log("firtname false");
+    firstNameError.textContent =
+      "Please enter 2 or more characters for the name field.";
     return false;
   }
 }
-// validate lastname
 function validateName() {
   const regex = /^.{2,}$/;
   if (regex.test(String(lastName.value))) {
@@ -102,21 +108,16 @@ function validateName() {
     return false;
   }
 }
-function validateFirstName() {
-  const regex = /^.{2,}$/;
-  if (regex.test(String(firstName.value))) {
-    console.log("firstname true");
+function validateMail() {
+  const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  if (regex.test(String(mail.value).toLowerCase())) {
     return true;
   } else {
-    firstName.style.border = "2px solid red";
-    console.log("firtname false");
-    firstNameError.textContent =
-      "Please enter 2 or more characters for the name field.";
-    // );
+    mail.style.border = "2px solid red";
+    mailError.textContent = "Must be a valid email address.";
     return false;
   }
 }
-// Validate age
 function validateDate() {
   const regex = /^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/;
   if (regex.test(String(birthDate.value))) {
@@ -129,19 +130,15 @@ function validateDate() {
     return false;
   }
 }
-
-// Terms of use checked
-function agreeAccepted() {
-  if (!checkAgree.checked) {
-    termsError.innerHTML =
-      "You must verify that you agree to the terms and conditions.";
-    return false;
-  } else {
+function validateNumber() {
+  if (/^\d+$/.test(String(numberTournament.value))) {
     return true;
+  } else {
+    numberTournament.style.border = "2px solid red";
+    numberTournamentError.textContent = "Must be a whole number";
+    return false;
   }
 }
-
-// Validation Radio Button
 function validateRadio() {
   let formValid = false;
   let i = 0;
@@ -158,19 +155,15 @@ function validateRadio() {
   }
   return formValid;
 }
-
-// Validate Mail
-function validateMail() {
-  const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  if (regex.test(String(mail.value).toLowerCase())) {
-    return true;
-  } else {
-    mail.style.border = "2px solid red";
-    mailError.textContent = "Must be a valid email address.";
+function agreeAccepted() {
+  if (!checkAgree.checked) {
+    termsError.innerHTML =
+      "You must verify that you agree to the terms and conditions.";
     return false;
+  } else {
+    return true;
   }
 }
-
 function validateForm(event) {
   reset();
   if (
@@ -200,19 +193,9 @@ function validateForm(event) {
     return false;
   }
 }
+// -----------------Validate Submit------------------------
 
-function launchModalSubmit() {
-  const modalSubmit = document.getElementById("modal--submit");
-  modalSubmit.style.display = "inline-block";
-  modalBody.style.display = "none";
-}
-
-document.getElementById("modal--submit").addEventListener("click", () => {
-  console.log("hello world");
-  modalbg.style.display = "none";
-});
-
-// Reset error message and style function
+// Reset error message and style function of modal
 function reset() {
   firstNameError.textContent = "";
   firstName.style.border = "none";
