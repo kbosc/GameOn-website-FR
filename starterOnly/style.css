@@ -54,7 +54,7 @@ img {
 
 .topnav a:hover {
   background-color: var(--main-color);
-  text-decoration: underline 0.5px;
+  text-decoration: underline;
   text-underline-position: under;
   color: #ffffff;
   border-radius: 15px;
@@ -616,7 +616,7 @@ footer {
   /* Change color of dropdown links on hover */
   .dropdown-content a:hover {
     background-color: var(--main-color);
-    text-decoration: underline 0.5px;
+    text-decoration: underline;
     text-underline-position: under;
     color: #ffffff;
     border-radius: 15px;
