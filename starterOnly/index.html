@@ -5,7 +5,10 @@
     <title>Reservation</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <link
       href="https://fonts.googleapis.com/css?family=DM+Sans"
       rel="stylesheet"
@@ -14,59 +17,57 @@
   <body>
     <div class="topnav" id="myTopnav">
       <div class="header-logo">
-      <img alt="logo" src="images/Logo.png" width="auto" height="auto" />
-    </div>
-    <div class="dropdown">
-      <div onclick="myFunction()" class="dropbtn"><i class="fa fa-bars"></i></div>
-      <div id="myDropdown" class="dropdown-content">
-        <a href="#">Event details</a>
-        <a href="#">About us</a>
-        <a href="#">Contact</a>
-        <a href="#">Pass events</a>
+        <img alt="logo" src="images/Logo.png" />
+      </div>
+      <div class="dropdown">
+        <div onclick="myFunction()" class="dropbtn">
+          <i class="fa fa-bars"></i>
+        </div>
+        <div id="myDropdown" class="dropdown-content">
+          <a href="#">Event details</a>
+          <a href="#">About us</a>
+          <a href="#">Contact</a>
+          <a href="#">Pass events</a>
+        </div>
       </div>
     </div>
-    </div>
-  </div>
     <main>
       <div class="hero-section" id="hero-section">
         <div class="hero-content">
           <h1 class="hero-headline">
-            US Nationwide<br>
+            US Nationwide<br />
             Game-a-Thon
           </h1>
           <p class="hero-text">
-            Do you live to game? Our next gaming event is now accepting reservations for players, but spots are limited.
+            Do you live to game? Our next gaming event is now accepting
+            reservations for players, but spots are limited.
           </p>
-          <button class="btn-signup modal-btn">
-            Sign Up Now
-          </button>
+          <button class="btn-signup modal-btn">Sign Up Now</button>
         </div>
         <div class="hero-img">
           <img src="./images/bg_img.jpg" alt="img" />
         </div>
-        <button class="btn-signup modal-btn">
-          Sign Up Now
-        </button>
+        <button class="btn-signup modal-btn">Sign Up Now</button>
       </div>
 
       <div class="bground">
         <div class="content">
           <span class="close"></span>
           <div id="modal--submit">
-            <p id='txt--submit'>Thank you for submitting your registration details</p> 
-            <input class='btn-submit' id="close-submit" type='submit' class='button' value='Close'/>
+            <p id="txt--submit">
+              Thank you for submitting your registration details
+            </p>
+            <input
+              class="btn-submit button"
+              id="close-submit"
+              type="submit"
+              value="Close"
+            />
           </div>
 
           <div class="modal-body" id="modal-body">
-            <form
-              name="reserve"
-              id="reserve"
-              action="index.html"
-              method="get"
-              
-            >
-              <div
-                class="formData">
+            <form name="reserve" id="reserve" action="index.html" method="get">
+              <div class="formData">
                 <label>First name</label>
                 <input
                   class="text-control error--name"
@@ -76,10 +77,12 @@
                   minlength="2"
                   required
                 />
-                <div class="error--msg error--firstname" id="error--firstname"></div>
+                <div
+                  class="error--msg error--firstname"
+                  id="error--firstname"
+                ></div>
               </div>
-              <div
-                class="formData">
+              <div class="formData">
                 <label>Name</label>
                 <input
                   class="text-control"
@@ -90,8 +93,8 @@
                   required
                 />
                 <div class="error--msg" id="error--lastname"></div>
-              <div
-                class="formData">
+              </div>
+              <div class="formData">
                 <label>E-mail</label>
                 <input
                   class="text-control"
@@ -102,8 +105,7 @@
                 />
                 <div class="error--msg" id="error--mail"></div>
               </div>
-              <div
-                class="formData">
+              <div class="formData">
                 <label>Date of birth</label>
                 <input
                   class="text-control"
@@ -114,16 +116,24 @@
                 />
                 <div class="error--msg" id="error--birthdate"></div>
               </div>
-              <div
-                class="formData">
-                <label>How many GameOn tournaments have you participated in?</label>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" required>
+              <div class="formData">
+                <label
+                  >How many GameOn tournaments have you participated in?</label
+                >
+                <input
+                  type="number"
+                  class="text-control"
+                  id="quantity"
+                  name="quantity"
+                  min="0"
+                  max="99"
+                  required
+                />
                 <div class="error--msg" id="error--quantity"></div>
               </div>
               <p class="text-label">Which cities?</p>
-              
-              <div id="radio--error"
-                >
+
+              <div id="radio--error">
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -193,19 +203,18 @@
               </div>
               <div id="error--msg"></div>
 
-              <div
-                class="formData">
+              <div class="formData">
                 <input
                   class="checkbox-input"
                   type="checkbox"
                   id="checkbox1"
                   checked
                 />
-                <label class="checkbox2-label" for="checkbox1" required>
-                  <span class="checkbox-icon " id="agree--checked"></span>
+                <label class="checkbox2-label" for="checkbox1">
+                  <span class="checkbox-icon" id="agree--checked"></span>
                   I have read and accepted the terms of use.
                 </label>
-                <div id="terms--error" class="error--msg "></div>
+                <div id="terms--error" class="error--msg"></div>
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
@@ -213,10 +222,9 @@
                 </label>
               </div>
               <input
-                class="btn-submit"
+                class="btn-submit button"
                 id="submit"
                 type="submit"
-                class="button"
                 value="Go"
               />
             </form>
@@ -225,9 +233,7 @@
       </div>
     </main>
     <footer>
-      <p class="copyrights">
-        Copyright 2014 - 2020, GameOn Inc.
-      </p>
+      <p class="copyrights">Copyright 2014 - 2020, GameOn Inc.</p>
     </footer>
     <script src="script.js"></script>
   </body>
