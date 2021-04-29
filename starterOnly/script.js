@@ -9,28 +9,13 @@ function editNav() {
 
 /* When the user clicks on the dropdown,
 toggle between hiding and showing content */
-function myFunction() {
+document.querySelector(".dropbtn").addEventListener("click", () => {
   document.getElementById("myDropdown").classList.toggle("show");
-}
-
-// Close the dropdown menu if the user clicks outside of it
-window.onclick = function (event) {
-  if (!event.target.matches(".dropbtn")) {
-    const dropdowns = document.getElementsByClassName("dropdown-content");
-    let i;
-    for (i = 0; i < dropdowns.length; i++) {
-      const openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains("show")) {
-        openDropdown.classList.remove("show");
-      }
-    }
-  }
-};
+});
 
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
-// const formData = document.querySelectorAll(".formData");
 
 const firstName = document.getElementById("first");
 const firstNameError = document.getElementById("error--firstname");
@@ -59,7 +44,6 @@ const termsError = document.getElementById("terms--error");
 const modalBody = document.getElementById("modal-body");
 const heroSection = document.getElementById("hero-section");
 const footer = document.querySelector("footer");
-
 // Event listener
 document.getElementById("close-submit").addEventListener("click", onClick);
 document.querySelector(".close").addEventListener("click", onClick);
@@ -74,7 +58,6 @@ function launchModal() {
 }
 
 function onClick() {
-  console.log("close modal");
   modalResponsiveClose();
   modalbg.style.display = "none";
   // modalbg.style = "display: none";
@@ -89,14 +72,12 @@ function modalResponsive() {
   if (window.matchMedia("(max-width:500px)").matches) {
     heroSection.style = "display: none";
     footer.style = "display: none";
-    console.log("le match media");
   }
 }
 function modalResponsiveClose() {
   if (window.matchMedia("(max-width:500px)").matches) {
     heroSection.style = "display: block";
     footer.style = "display: bloc";
-    console.log("le match media close");
   }
 }
 // ------------------Responsive Modal-------------------
@@ -105,11 +86,9 @@ function modalResponsiveClose() {
 function validateFirstName() {
   const regex = /^.{2,}$/;
   if (regex.test(String(firstName.value))) {
-    console.log("firstname true");
     return true;
   } else {
     firstName.style.border = "2px solid red";
-    console.log("firtname false");
     firstNameError.textContent =
       "Please enter 2 or more characters for the name field.";
     return false;
@@ -118,11 +97,9 @@ function validateFirstName() {
 function validateName() {
   const regex = /^.{2,}$/;
   if (regex.test(String(lastName.value))) {
-    console.log("lastname true");
     return true;
   } else {
     lastName.style.border = "2px solid red";
-    console.log("lastname false");
     lastNameError.textContent =
       "Please enter 2 or more characters for the name field.";
     return false;
@@ -141,11 +118,9 @@ function validateMail() {
 function validateDate() {
   const regex = /^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/;
   if (regex.test(String(birthDate.value))) {
-    console.log("date true");
     return true;
   } else {
     birthDate.style.border = "2px solid red";
-    console.log("date false");
     birthDateError.textContent = "You must enter your date of birth.";
     return false;
   }
@@ -196,7 +171,6 @@ function validateForm(event) {
     agreeAccepted()
   ) {
     event.preventDefault();
-    console.log("Win");
     launchModalSubmit();
     // return true;
   } else {
@@ -208,7 +182,6 @@ function validateForm(event) {
     validateNumber();
     validateRadio();
     agreeAccepted();
-    console.log("failed");
 
     return false;
   }
